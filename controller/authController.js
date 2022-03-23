@@ -56,6 +56,7 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!email || !password) {
     return next(new AppError('Please provide email and password!', 400));
   }
+
   // 2) Check if user exists && password is correct
   const user = await User.findOne({ email }).select('+password');
 
@@ -63,8 +64,32 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError('Incorrect email or password', 401));
   }
 
-  // 3) If everything ok, send token to client
+  // 3). Check if user email has been confirmed
+  if (!user.emailConfirm) {
+    return next(new AppError('Please confirm your email', 401));
+  }
+
+  // 4) If everything ok, send token to client
   createSendToken(user, 200, req, res);
+});
+
+exports.emailConfirm = catchAsync(async (req, res, next) => {
+  // 1). Checl if user exists by searching user by ID
+  const user = await User.findById(req.params.userId);
+
+  if (!user)
+    return next(new AppError('No user was found, please try again', 400));
+
+  // 2). change email to confirm
+  if (!user.emailConfirm) {
+    user.emailConfirm = true;
+    user.save();
+  }
+
+  // Return sucess to the user
+  res
+    .status(200)
+    .json({ status: 'success', message: 'Your email has been confirmed' });
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
