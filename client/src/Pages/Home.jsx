@@ -1,12 +1,19 @@
 import React from 'react';
 import SocialMedia from '../Components/SocialMedia';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { logout } from '../redux/UserRedux';
 
 //const LinearGradient = 'linear-gradient(180deg, #303030 0%, rgba(198, 119, 0, 0.25) 20%)'
 //const LinearGradient = 'linear-gradient(180deg, #303030 0%, rgba(198, 119, 0, 0.1) 20%)'
 const LinearGradient = 'linear-gradient(180deg, #303030 0%, rgba(190, 120, 110, 0.12) 20%)'
 
 export default function Home() {
+
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+  
   return (
     <div className="relative">
       <nav className="bg-black sm:bg-transparent w-full h-52 sm:h-40 relative sm:absolute">
@@ -36,7 +43,8 @@ export default function Home() {
                   <a href="/booking">Booking</a>
                 </li>
                 <li>
-                  <a href="/login">Login</a>
+                  {user ? <FontAwesomeIcon onClick={() => dispatch(logout())} className="cursor-pointer" icon={faUser} /> : <a href="/login">Login</a>}
+                  
                 </li>
               </ul>
 
