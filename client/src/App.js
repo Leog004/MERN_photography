@@ -7,6 +7,7 @@ import {
   Navigate
 } from 'react-router-dom';
 import Login from './Pages/Login';
+import Gallery from './Pages/Gallery';
 import { useSelector } from 'react-redux';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <ScrollToTop>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/gallery" element={<Gallery />} />
           <Route path="/login" element={ user ? <Navigate to="/" /> : <Login/>} />
         </Routes>
       </ScrollToTop>
