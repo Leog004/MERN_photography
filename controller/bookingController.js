@@ -1,5 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SK);
-const Tour = require('../models/tourModel');
+//const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
 const AppError = require('../utils/appError');
@@ -9,7 +9,7 @@ const factory = require('./handlerFactory');
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   // 1). Get the currently booked tour session
-  const tour = await Tour.findById(req.params.tourId);
+  const tour = ''; //await Tour.findById(req.params.tourId);
 
   if (!tour) next(new AppError('no tour found with that ID'));
 
@@ -53,7 +53,7 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   await Booking.create({ tour, user, price });
 
   const getUser = await User.findById(user);
-  const getTour = await Tour.findById(tour);
+  //const getTour = await Tour.findById(tour);
 
   await new Email(getUser, req.query).sendBooking(getTour);
 

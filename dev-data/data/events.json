@@ -1,0 +1,14 @@
+[
+    {
+      "_id": "5c88fa8cf4afda39709c2955",
+      "user": "5c8a1dfa2f8fb814b56fa181",
+      "name": "The Sea Explorer",
+      "slug": "the-sea-explorer",
+      "description": "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nIrure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "eventType": "wedding",
+      "location": "Lummus Park Beach",
+      "time": "10:00",
+      "date": "2021-06-19,10:00",
+      "dateAdded": "2022-03-23T20:02:55.096+00:00"
+    }
+  ]

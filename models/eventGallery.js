@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const eventSchema = new mongoose.Schema({
+const eventGallerySchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
@@ -22,6 +22,6 @@ const eventSchema = new mongoose.Schema({
   },
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model('EventGallery', eventGallerySchema);
 
 module.exports = Event;
