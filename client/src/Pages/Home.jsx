@@ -1,9 +1,13 @@
 import React from 'react'
+import Footer from '../Components/Footer'
+import Navbar from '../Components/NavBar'
+
 
 export default function Home() {
   return (
-    <div>
-        <h1>Hello from home page</h1>
-    </div>
+    <>
+   <Navbar/>
+   <Footer/>
+   </>
   )
 }
