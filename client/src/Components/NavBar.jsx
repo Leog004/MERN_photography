@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-black sm:bg-transparent w-full h-52 sm:h-40 relative sm:absolute">
-      <div className="flex flex-col sm:flex-row justify-between h-full px-20 w-full">
+      <div className="flex flex-col sm:flex-row justify-between h-full px-0 sm:px-20 w-full">
         <div className="logo flex h-full w-auto items-end align-center justify-center">
           <Link to="/">
             <img
@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="nav-items flex flex-col h-full justify-center items-center">
           <SocialMedia />
 
-          <ul className="item flex gap-10 pb-5 text-white items-end align-center h-auto">
+          <ul className="item flex w-full flex-wrap justify-center gap-4 sm:gap-10 pb-5 text-white items-end align-center h-auto">
             <li>
               <a href="/">Home</a>
             </li>
