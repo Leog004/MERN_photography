@@ -10,6 +10,7 @@ import Login from './Pages/Login';
 import Gallery from './Pages/Gallery';
 import { useSelector } from 'react-redux';
 import Services from './Pages/Services';
+import Booking from './Pages/Booking';
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -21,9 +22,8 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/gallery" element={<Gallery />} />
           <Route exact path="/services" element={<Services />} />
-          <Route
-            path="/login"
-            element={user ? <Navigate to="/" /> : <Login />}
+          <Route exact path="/booking" element={<Booking />} />
+          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />}
           />
         </Routes>
       </ScrollToTop>

@@ -9,8 +9,8 @@ export default function Services() {
       <Navbar />
       <Hero />
       <section className="w-full h-full max-w-7xl mx-auto py-24">
-        <div className="flex w-full">
-          <div className="flex flex-col w-1/2 pr-10 gap-y-10">
+        <div className="flex flex-col sm:flex-row w-full">
+          <div className="flex flex-col w-full sm:w-1/2 px-5 mb-10 sm:mb-0 sm:pr-10 gap-y-10">
             <div className="flex flex-col">
               <h1 className="text-5xl leading-[1.2] mb-10">
                 Photography is an art. <span className="text-sm">(Style 1)</span>
@@ -43,7 +43,7 @@ export default function Services() {
             </div>
           </div>
 
-          <div className="flex w-1/2">
+          <div className="flex w-full sm:w-1/2">
             <img
               alt="placeholder"
               className="object-cover object-right w-full h-full"
@@ -54,8 +54,8 @@ export default function Services() {
       </section>
 
       <section className="w-full h-full max-w-7xl mx-auto pb-24">
-        <div className="flex gap-x-10">
-          <div className="flex flex-col gap-y-10 w-1/2">
+        <div className="flex flex-col sm:flex-row gap-x-10">
+          <div className="flex flex-col gap-y-10 w-full mb-10 px-5 sm:px-0 sm:mb-0 sm:w-1/2">
             <h2 className="text-4xl tracking-[1.7] leading-[1.2]">Weddings <span className="text-sm">(Style 2)</span></h2>
             <p className="text-sm text-gray-500 tracking-wide font-semibold leading-6">
               Fusce aliquam tincidunt hendrerit. Nunc tincidunt id velit sit
@@ -97,7 +97,7 @@ export default function Services() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-x-10 w-1/2 justify-center items-center">
+          <div className="grid grid-cols-2 gap-x-2 sm:gap-x-10 w-full sm:w-1/2 justify-center items-center">
             <div class="bg-white max-w-2xl shadow overflow-hidden sm:rounded-sm">
               <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">

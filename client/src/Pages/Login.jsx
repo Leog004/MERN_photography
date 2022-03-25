@@ -46,7 +46,7 @@ export default function Login() {
               backgroundImage: `${LinearGradient},url('https://images.unsplash.com/photo-1629264422348-4437c4849179?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')`,
             }}
           ></div>
-          <div className="container px-5 py-24 mx-auto w-1/2 bg-[#fafcfb4d]">
+          <div className="container px-5 py-24 mx-auto w-full sm:w-1/2 bg-[#fafcfb4d]">
             <div className="flex flex-col text-center w-full mb-12">
               <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                 Login
