@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Footer from '../Components/Footer';
 import { login } from '../redux/apiCalls';
 
 const LinearGradient =
@@ -129,6 +130,8 @@ export default function Login() {
             </div>
         </div>
     </div>
+    <Footer/>
     </div>
+    
   );
 }
