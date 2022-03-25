@@ -7,7 +7,7 @@ export default function Services() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero title={'Services'} image={'https://images.unsplash.com/photo-1496559249665-c7e2874707ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} />
       <section className="w-full h-full max-w-7xl mx-auto py-24">
         <div className="flex flex-col sm:flex-row w-full">
           <div className="flex flex-col w-full sm:w-1/2 px-5 mb-10 sm:mb-0 sm:pr-10 gap-y-10">
