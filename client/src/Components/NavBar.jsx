@@ -27,16 +27,24 @@ export default function Navbar() {
 
           <ul className="item flex w-full flex-wrap justify-center gap-4 sm:gap-10 pb-5 text-white items-end align-center h-auto">
             <li>
-              <a href="/">Home</a>
+            <Link to="/">
+              <button>Home</button>
+            </Link>
             </li>
             <li>
-              <a href="/gallery">Gallery</a>
+            <Link to="/gallery">
+              <button>Gallery</button>
+            </Link>
             </li>
             <li>
-              <a href="/services">Services</a>
+            <Link to="/services">
+              <button>Services</button>
+            </Link>
             </li>
             <li>
-              <a href="/booking">Booking</a>
+            <Link to="/booking">
+              <button>Booking</button>
+            </Link>
             </li>
             <li>
               {user ? (
@@ -46,7 +54,9 @@ export default function Navbar() {
                   icon={faUser}
                 />
               ) : (
-                <a href="/login">Login</a>
+                <Link to="/login">
+                <button>Login</button>
+              </Link>
               )}
             </li>
           </ul>
