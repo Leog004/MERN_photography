@@ -43,11 +43,11 @@ export default function Services() {
             </div>
           </div>
 
-          <div className="flex w-full sm:w-1/2">
+          <div className="flex w-full max-h-[485px] sm:w-1/2">
             <img
               alt="placeholder"
               className="object-cover object-right w-full h-full"
-              src="https://images.unsplash.com/photo-1496559249665-c7e2874707ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              src="https://images.unsplash.com/photo-1504199367641-aba8151af406?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
             />
           </div>
         </div>
@@ -69,12 +69,17 @@ export default function Services() {
                 eget velit euismod pretium. Etiam porttitor finibus pretium. Nam
                 suscipit vel ligula at dharetra.
               </p>
-
             <div className="grid grid-1 sm:grid-cols-2 gap-x-8 gap-y-10">
               <div className="flex h-full max-h-96 px-4 sm:px-0">
-                <img
+              <img
                   alt={'asd'}
                   src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                />
+              </div>
+              <div className="flex h-full max-h-96 px-4 sm:px-0">
+              <img
+                  alt={'asd'}
+                  src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                 />
               </div>
               <div className="flex h-full max-h-96 px-4 sm:px-0">
@@ -86,13 +91,7 @@ export default function Services() {
               <div className="flex h-full max-h-96 px-4 sm:px-0">
                 <img
                   alt={'asd'}
-                  src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                />
-              </div>
-              <div className="flex h-full max-h-96 px-4 sm:px-0">
-                <img
-                  alt={'asd'}
-                  src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                  src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                 />
               </div>
             </div>

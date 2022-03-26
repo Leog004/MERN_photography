@@ -3,9 +3,12 @@ import Hero from '../Components/Hero';
 import Navbar from '../Components/NavBar';
 import Footer from '../Components/Footer';
 import { parseISO, format } from 'date-fns';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import Autocomplete from 'react-google-autocomplete';
 
 const datesToAddClassTo = [
   '2022-03-29T00:00:00',
@@ -32,13 +35,29 @@ function tileClassName({ date, view }) {
   }
 }
 export default function Booking() {
+
   const [value, onChange] = useState(new Date());
+
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <>
       <Navbar />
-      <Hero title={'Booking'} image={'https://images.unsplash.com/photo-1496559249665-c7e2874707ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} />
+      <Hero
+        title={'Booking'}
+        image={
+          'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
+        }
+      />
       <section className="w-full h-full max-w-7xl mx-auto py-24">
+        <div className="flex flex-col w-full justify-center items-center mb-20 gap-y-1">
+          <h2 className="font-semibold text-xl">Booking</h2>
+          <h1 className="font-semibold text-3xl mb-5">Let's work together</h1>
+          <p>
+            Please fill out the form on this section to contact with me. Or call
+            between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday
+          </p>
+        </div>
         <div className="flex flex-col sm:flex-row w-full">
           <div className="flex w-full sm:w-1/2">
             <form className="flex flex-col w-full">
@@ -46,29 +65,21 @@ export default function Booking() {
                 <div>
                   <label
                     className="text-gray-700 dark:text-gray-200"
-                    for="username"
-                  >
-                    Full Name:{' '}
-                  </label>
-                  <input
-                    id="username"
-                    type="text"
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    className="text-gray-700 dark:text-gray-200"
                     for="emailAddress"
                   >
                     Type of event:{' '}
                   </label>
-                  <input
-                    id="emailAddress"
-                    type="email"
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                  />
+
+                  <select
+                    class="block mt-2 w-52 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    name="animals"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="dog">Wedding</option>
+                    <option value="cat">Headshots</option>
+                    <option value="hamster">Real Estate</option>
+                    <option value="parrot">Other</option>
+                  </select>
                 </div>
 
                 <div>
@@ -78,10 +89,17 @@ export default function Booking() {
                   >
                     Location
                   </label>
-                  <input
-                    id="password"
-                    type="password"
+                  <Autocomplete
+                    apiKey={'AIzaSyAlE6SHkarQSaFKnLsBxV99wHEOuZDOaH0'}
                     className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                    onPlaceSelected={(place) => {
+                      console.log(place);
+                    }}
+                    options={{
+                      types: ['address'],
+                      componentRestrictions: { country: 'usa' },
+                    }}
+                    defaultValue=""
                   />
                 </div>
 
@@ -89,27 +107,31 @@ export default function Booking() {
                   <div className="flex flex-col w-full">
                     <label
                       className="text-gray-700 dark:text-gray-200"
-                      for="passwordConfirmation"
+                      for="time"
                     >
                       Time
                     </label>
                     <input
-                      id="passwordConfirmation"
-                      type="password"
+                      id="time"
+                      type="text"
+                      placeholder="Insert a desire time"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                     />
                   </div>
                   <div className="flex flex-col w-full">
                     <label
                       className="text-gray-700 dark:text-gray-200"
-                      for="passwordConfirmation"
+                      for="date"
                     >
                       Date
                     </label>
                     <input
-                      id="passwordConfirmation"
-                      type="password"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      id="date"
+                      type="text"
+                      title={'Must use the calender to change modify date'}
+                      disabled={true}
+                      value={value.toLocaleDateString()}
+                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 cursor-not-allowed border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                     />
                   </div>
                 </div>
@@ -117,14 +139,22 @@ export default function Booking() {
 
               <div className="flex w-full mt-6">
                 <div className="flex mr-10">
-                  <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                    Submit Booking
-                  </button>
+                  {user ? (
+                    <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                      Submit Booking
+                    </button>
+                  ) : (
+                    <Link to="/login">
+                      <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-red-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        Log in to complete booking
+                      </button>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="flex">
                   <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                    Contact 
+                    Contact
                   </button>
                 </div>
               </div>
