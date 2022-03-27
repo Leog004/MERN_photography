@@ -1,14 +1,12 @@
 import React from 'react';
 import SocialMedia from '../Components/SocialMedia';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { logout } from '../redux/UserRedux';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const user = useSelector((state) => state.user.currentUser);
-  const dispatch = useDispatch();
 
   return (
     <nav className="bg-black sm:bg-transparent w-full h-52 sm:h-40 relative sm:absolute">
@@ -27,36 +25,34 @@ export default function Navbar() {
 
           <ul className="item flex w-full flex-wrap justify-center gap-4 sm:gap-10 pb-5 text-white items-end align-center h-auto">
             <li>
-            <Link to="/">
-              <button>Home</button>
-            </Link>
+              <Link to="/">
+                <button>Home</button>
+              </Link>
             </li>
             <li>
-            <Link to="/gallery">
-              <button>Gallery</button>
-            </Link>
+              <Link to="/gallery">
+                <button>Gallery</button>
+              </Link>
             </li>
             <li>
-            <Link to="/services">
-              <button>Services</button>
-            </Link>
+              <Link to="/services">
+                <button>Services</button>
+              </Link>
             </li>
             <li>
-            <Link to="/booking">
-              <button>Booking</button>
-            </Link>
+              <Link to="/booking">
+                <button>Booking</button>
+              </Link>
             </li>
             <li>
               {user ? (
-                <FontAwesomeIcon
-                  onClick={() => dispatch(logout())}
-                  className="cursor-pointer"
-                  icon={faUser}
-                />
+                <Link to="/account">
+                  <FontAwesomeIcon className="cursor-pointer" icon={faUser} />
+                </Link>
               ) : (
                 <Link to="/login">
-                <button>Login</button>
-              </Link>
+                  <button>Login</button>
+                </Link>
               )}
             </li>
           </ul>

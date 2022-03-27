@@ -25,15 +25,22 @@ export default function Login() {
 
   let { userId } = useParams();
 
-  useEffect(async () => {
-    if (userId) {
-      try {
-        const res = await publicRequest.get(`users/auth/${userId}`);
-      } catch (err) {
-        console.error(err);
+  useEffect(() => {
+    async function confirmEmail() {
+      if (userId) {
+        try {
+          const res = await publicRequest.get(`users/auth/${userId}`);
+          if(!res) {
+            console.log(res);
+          }
+        } catch (err) {
+          console.error(err);
+        }
       }
     }
-  }, []);
+
+    confirmEmail();
+  }, [userId]);
 
   return (
     <div className="relative">

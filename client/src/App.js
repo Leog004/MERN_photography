@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import Services from './Pages/Services';
 import Booking from './Pages/Booking';
 import Signup from './Pages/Signup';
+import Account from './Pages/Account';
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -24,6 +25,8 @@ const App = () => {
           <Route exact path="/gallery" element={<Gallery />} />
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/booking" element={<Booking />} />
+          <Route path="/account" element={user ? <Account /> : <Navigate to="/" />} />
+          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/login/:userId" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
         </Routes>
