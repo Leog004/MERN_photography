@@ -67,7 +67,13 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     return next(new AppError('This password is not for password updates', 400));
   }
   // 2). Update user document
-  const filteredBody = filterObj(req.body, 'name', 'email');
+  const filteredBody = filterObj(
+    req.body,
+    'firstName',
+    'lastName',
+    'phone',
+    'email'
+  );
   if (req.file) filteredBody.photo = req.file.filename;
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {

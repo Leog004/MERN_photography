@@ -5,7 +5,7 @@ import Footer from '../Components/Footer';
 import { parseISO, format } from 'date-fns';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Autocomplete from 'react-google-autocomplete';
@@ -35,7 +35,6 @@ function tileClassName({ date, view }) {
   }
 }
 export default function Booking() {
-
   const [value, onChange] = useState(new Date());
 
   const user = useSelector((state) => state.user.currentUser);
@@ -153,6 +152,10 @@ export default function Booking() {
                 </div>
 
                 <div className="flex">
+                  <MessengerCustomerChat
+                    pageId="1213488835459332"
+                    appId="371668448192097"
+                  />
                   <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
                     Contact
                   </button>

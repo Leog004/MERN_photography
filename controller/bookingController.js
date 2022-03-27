@@ -2,6 +2,7 @@ const stripe = require('stripe')(process.env.STRIPE_SK);
 //const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
+const Event = require('../models/eventModel');
 const AppError = require('../utils/appError');
 const Email = require('../utils/email');
 const catchAsync = require('../utils/catchAsync');
@@ -45,19 +46,60 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createBookingCheckout = catchAsync(async (req, res, next) => {
-  const { tour, user, price } = req.query;
+// exports.createBookingCheckout = catchAsync(async (req, res, next) => {
+//   const { tour, user, price } = req.query;
 
-  if (!tour && !user && !price) return next();
+//   if (!tour && !user && !price) return next();
 
-  await Booking.create({ tour, user, price });
+//   await Booking.create({ tour, user, price });
+
+//   const getUser = await User.findById(user);
+//   //const getTour = await Tour.findById(tour);
+
+//   await new Email(getUser, req.query).sendBooking(getTour);
+
+//   res.status(200).json({ status: 'success' });
+// });
+
+exports.createBookingEvent = catchAsync(async (req, res, next) => {
+  const user = req.user._id;
+  const { event, price } = req.body;
+
+  if (!user && !event) return next(new AppError('something went wrong'));
+
+  const newEvent = await Event.create({
+    user: user,
+    name: event.name,
+    description: event.description,
+    eventType: event.eventType,
+    location: event.location,
+    time: event.time,
+    date: event.date,
+  });
+
+  await Booking.create({
+    event: newEvent._id,
+    user: user,
+    price: price,
+  });
 
   const getUser = await User.findById(user);
-  //const getTour = await Tour.findById(tour);
 
-  await new Email(getUser, req.query).sendBooking(getTour);
+  await new Email(getUser, req.query).sendBooking();
 
   res.status(200).json({ status: 'success' });
+});
+
+exports.getMyBookings = catchAsync(async (req, res, next) => {
+  const user = req.user._id;
+
+  if (!user) return next(new AppError('No user is found'));
+
+  const bookings = await Booking.find({
+    where: { user },
+  }).select('-user');
+
+  res.status(200).json({ status: 'success', bookings });
 });
 
 exports.createBooking = factory.createOne(Booking);

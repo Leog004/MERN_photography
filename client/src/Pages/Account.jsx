@@ -22,8 +22,29 @@ export default function Account() {
   const [phone, setPhone] = useState('');
   const [showModel, setshowModel] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [userId, setUserId] = useState('');
 
-  const handleOnClick = () => {};
+  const handleOnClick = () => {
+    const updateUser = async () => {
+      const data = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+      };
+
+      try {
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+        const uUser = await UserRequest.patch(`users/updateMe`, data, config);
+        console.log(uUser);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    updateUser();
+  };
 
   useEffect(() => {
     const getUserInformation = async () => {
@@ -32,11 +53,12 @@ export default function Account() {
           headers: { Authorization: `Bearer ${token}` },
         };
         const res = await UserRequest.get(`users/me `, config);
-        const { email, firstName, lastName, phoneNumber } = res.data.data.data;
+        const { email, firstName, lastName, phone, _id } = res.data.data.data;
         setEmail(email);
         setFirstName(firstName);
         setLastName(lastName);
-        setPhone(phoneNumber || "");
+        setPhone(phone || '');
+        setUserId(_id);
       } catch (e) {
         console.log(e);
       }
@@ -57,44 +79,28 @@ export default function Account() {
       />
 
       <div className="w-full max-w-7xl mx-auto">
-        <div className="flex w-full h-full">
+        <div className="flex flex-col sm:flex-row w-full h-full">
           <div class="relative bg-gray-100">
             <div class="flex flex-col sm:flex-row sm:justify-around">
-              <div class="w-72 h-screen">
+              <div class="w-72 sm:h-screen">
                 <nav class="mt-10 px-6 ">
-                  <a
-                    class="bg-gray-300 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
-                    href="#"
-                  >
+                  <button class="w-full bg-gray-300 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                     <span class="mx-4 text-lg font-normal">
                       Personal Information
                     </span>
                     <span class="flex-grow text-right"></span>
-                  </a>
-                  <a
-                    class="hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-800 dark:text-gray-100 rounded-lg bg-gray-100 dark:bg-gray-600"
-                    href="#"
-                  >
-                    <span class="mx-4 text-lg font-normal">Payments</span>
+                  </button>
+                  <button class="w-full hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-800 dark:text-gray-100 rounded-lg bg-gray-100 dark:bg-gray-600">
+                    <span class="mx-4 text-lg font-normal">Your Bookings</span>
                     <span class="flex-grow text-right"></span>
-                  </a>
-                  <a
-                    class="hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
-                    href="#"
-                  >
-                    <span class="mx-4 text-lg font-normal">
-                      Your Booking Gallery
-                    </span>
-                    <span class="flex-grow text-right"></span>
-                  </a>
-                  <a
+                  </button>
+                  <button
                     onClick={() => dispatch(logout())}
-                    class="hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
-                    href="#"
+                    class="w-full hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
                   >
                     <span class="mx-4 text-lg font-normal">Sign Out</span>
                     <span class="flex-grow text-right"></span>
-                  </a>
+                  </button>
                 </nav>
               </div>
             </div>
