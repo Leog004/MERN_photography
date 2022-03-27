@@ -9,7 +9,8 @@
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "start:prod": "SET NODE_ENV=production && nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
   },
   "author": "Leo Garza",
   "license": "ISC",
@@ -36,7 +37,9 @@
     "slugify": "^1.6.5",
     "stripe": "^8.210.0",
     "validator": "^13.7.0",
-    "xss-clean": "^0.1.1"
+    "xss-clean": "^0.1.1",
+    "concurrently": "^5.0.0"
+
   },
   "devDependencies": {
     "eslint": "^8.11.0",
