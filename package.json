@@ -4,12 +4,13 @@
   "description": "nodejs backend build",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "heroku-postbuild": "npm run install-client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production && nodemon server.js",
-    "debug": "ndb server.js",
+    "client": "cd client && npm start",
     "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
   },
   "author": "Leo Garza",

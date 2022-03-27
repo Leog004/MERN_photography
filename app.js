@@ -33,15 +33,12 @@ app.options('*', cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Security HTTP headers
+app.use(helmet());
 app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      'img-src': ['self', 'https://images.unsplash.com', 'https://imaginem.io'],
-    },
+  helmet({
+    contentSecurityPolicy: false,
   })
 );
-
 // Logging MIDDLEWARE
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
