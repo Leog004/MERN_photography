@@ -41,7 +41,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  //app.use(express.static('client/build'));
 }
 
 // limits the amount of request made per api
