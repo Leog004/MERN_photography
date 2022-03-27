@@ -33,7 +33,14 @@ app.options('*', cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Security HTTP headers
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      'img-src': ["'self'", 'https: data:'],
+    },
+  })
+);
 
 // Logging MIDDLEWARE
 if (process.env.NODE_ENV === 'development') {
@@ -41,7 +48,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(`${__dirname}/client/build`)));
   //app.use(express.static('client/build'));
 }
 
