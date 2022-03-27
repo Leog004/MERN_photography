@@ -40,6 +40,10 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 // limits the amount of request made per api
 const limiter = rateLimit({
   max: 100,

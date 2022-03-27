@@ -5,6 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
     "start:prod": "SET NODE_ENV=production && nodemon server.js",
     "debug": "ndb server.js"
   },

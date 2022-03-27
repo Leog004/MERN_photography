@@ -5,13 +5,10 @@ import { logout } from '../redux/UserRedux';
 import { useDispatch } from 'react-redux';
 import Footer from '../Components/Footer';
 import { useSelector } from 'react-redux';
-import { publicRequest, UserRequest } from '../requestMethod';
+import {UserRequest } from '../requestMethod';
 
 export default function Account() {
   const dispatch = useDispatch();
-  const user_id = useSelector(
-    (state) => state.user.currentUser?.data?.user?._id
-  );
   const token = useSelector((state) => state.user.currentUser?.token);
 
   const { isFetching } = useSelector((state) => state.user);
@@ -22,7 +19,6 @@ export default function Account() {
   const [phone, setPhone] = useState('');
   const [showModel, setshowModel] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [userId, setUserId] = useState('');
 
   const handleOnClick = () => {
     const updateUser = async () => {
@@ -53,19 +49,18 @@ export default function Account() {
           headers: { Authorization: `Bearer ${token}` },
         };
         const res = await UserRequest.get(`users/me `, config);
-        const { email, firstName, lastName, phone, _id } = res.data.data.data;
+        const { email, firstName, lastName, phone } = res.data.data.data;
         setEmail(email);
         setFirstName(firstName);
         setLastName(lastName);
         setPhone(phone || '');
-        setUserId(_id);
       } catch (e) {
         console.log(e);
       }
     };
 
     getUserInformation();
-  }, []);
+  }, [token]);
 
   return (
     <div>
