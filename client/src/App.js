@@ -24,7 +24,7 @@ const App = () => {
           <Route exact path="/gallery" element={<Gallery />} />
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/booking" element={<Booking />} />
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+          <Route path="/login/:userId" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
         </Routes>
       </ScrollToTop>

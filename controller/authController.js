@@ -45,10 +45,13 @@ exports.signUp = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
-  const url = `${req.protocol}://${req.get('host')}/me`;
-  await new Email(newUser, url).sendWelcome();
-
   createSendToken(newUser, 201, req, res);
+
+  const url = `${req.protocol}://localhost:3000/users/auth/${
+    newUser._id
+  }`;
+
+  await new Email(newUser, url).sendBooking();
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -80,13 +83,15 @@ exports.emailConfirm = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.params.userId);
 
   if (!user)
-    return next(new AppError('No user was found, please try again', 400));
+    return next(new AppError('No user was found, please try again', 401));
 
   // 2). change email to confirm
   if (!user.emailConfirm) {
     user.emailConfirm = true;
-    user.save();
+    user.save({ validateBeforeSave: false });
   }
+
+  await new Email(user, '').sendWelcome();
 
   // Return sucess to the user
   res

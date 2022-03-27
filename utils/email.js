@@ -5,7 +5,8 @@ const { htmlToText } = require('html-to-text');
 module.exports = class Email {
   constructor(user, url) {
     this.to = user.email;
-    this.firstName = user.name.includes(' ') ? user.name.split(' ')[0] : '';
+    this.firstName = user.firstName,
+    this.lastName = user.lastName
     this.url = url;
     this.from = `Jonas Schmedtmann <${process.env.EMAIL_FROM}>`;
   }
@@ -33,12 +34,11 @@ module.exports = class Email {
   }
 
   // Send the actual email
-  async send(template, subject, data = null) {
+  async send(template, subject) {
     // 1) Render HTML based on a pug template
     const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
       firstName: this.firstName,
       url: this.url,
-      data: data || null,
       subject,
     });
 
@@ -66,7 +66,7 @@ module.exports = class Email {
     );
   }
 
-  async sendBooking(data) {
-    await this.send('booking', 'Your booking overview', data);
+  async sendBooking() {
+    await this.send('booking', 'Your booking overview');
   }
 };

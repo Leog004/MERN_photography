@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../Components/Footer';
 import { login } from '../redux/apiCalls';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { publicRequest } from '../requestMethod';
 
 const LinearGradient =
   'linear-gradient(180deg, #303030 0%, rgba(190, 120, 110, 0.12) 20%)';
@@ -22,7 +23,18 @@ export default function Login() {
     login(dispatch, { email, password }, setshowModel, setSuccess);
   };
 
-  console.log(success);
+  let { userId } = useParams();
+
+  useEffect(async () => {
+    if (userId) {
+      try {
+        const res = await publicRequest.get(`users/auth/${userId}`);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }, []);
+
   return (
     <div className="relative">
       <nav className="bg-gray-900 sm:bg-transparent w-full h-28 sm:h-40 relative sm:absolute z-20">
