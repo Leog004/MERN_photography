@@ -11,14 +11,14 @@ export default function Home() {
   return (
     <div className="relative">
     <Navbar />
-      <div className="flex flex-col md:flex-row min-h-screen h-screen">
+      <div className="flex flex-col md:flex-row h-full sm:min-h-screen sm:h-screen">
         <div
-          className="flex w-full md:w-1/3 h-full bg-cover bg-center border border-gray-800"
+          className="flex w-full md:w-1/3 h-96 sm:h-full bg-cover bg-center border border-gray-800"
           style={{
             backgroundImage: `${LinearGradient},url('https://images.unsplash.com/photo-1553272725-086100aecf5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80')`,
           }}
         >
-          <div className="flex justify-center items-end h-full w-full py-40 px-14">
+          <div className="flex justify-center items-center sm:items-end h-full w-full py-10 sm:py-40 px-14">
             <div className="flex flex-col text-white">
               <h2 className="font-bold text-2xl leading-10">Commercial</h2>
               <p className="text-sm leading-5">
@@ -34,12 +34,12 @@ export default function Home() {
           </div>
         </div>
         <div
-          className="flex w-full md:w-1/3 h-full bg-cover bg-center border border-gray-800"
+          className="flex w-full md:w-1/3 h-96 sm:h-full bg-cover bg-center border border-gray-800"
           style={{
             backgroundImage: `${LinearGradient},url('https://images.unsplash.com/photo-1629264422348-4437c4849179?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')`,
           }}
         >
-          <div className="flex justify-center items-end h-full w-full py-40 px-14">
+          <div className="flex justify-center items-center sm:items-end h-full w-full py-10 sm:py-40 px-14">
             <div className="flex flex-col text-white">
               <h2 className="font-bold text-2xl leading-10">Lifestyle</h2>
               <p className="text-sm leading-5">
@@ -55,12 +55,12 @@ export default function Home() {
           </div>
         </div>
         <div
-          className="flex w-full md:w-1/3 h-full bg-cover bg-center border border-gray-800"
+          className="flex w-full md:w-1/3 h-96 sm:h-full bg-cover bg-center border border-gray-800"
           style={{
             backgroundImage: `${LinearGradient},url('https://images.unsplash.com/photo-1624404238005-5a909e551a8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')`,
           }}
         >
-          <div className="flex justify-center items-end h-full w-full py-40 px-14">
+          <div className="flex justify-center items-center sm:items-end h-full w-full py-10 sm:py-40 px-14">
             <div className="flex flex-col text-white">
               <h2 className="font-bold text-2xl leading-10">Special Moments</h2>
               <p className="text-sm leading-5">
