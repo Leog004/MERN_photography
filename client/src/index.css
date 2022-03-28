@@ -101,3 +101,8 @@ code {
   height: 1px;
   background: rgba(124, 114, 114, 0.651);
 }
+
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
