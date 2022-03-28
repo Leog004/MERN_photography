@@ -14,9 +14,9 @@ export default function Navbar() {
         <div className="logo flex h-full w-auto items-end align-center justify-center">
           <Link to="/">
             <img
-              className="h-20 w-auto pb-5"
+              className="h-32 w-auto pb-5 pt-5 sm:pt-0"
               alt="company-logo"
-              src="https://imaginem.io/blacksilver/wp-content/uploads/sites/2/2019/11/logo_responsive_alt.png"
+              src="/logo1921.png"
             />
           </Link>
         </div>

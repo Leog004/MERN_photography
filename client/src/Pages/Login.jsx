@@ -47,15 +47,13 @@ export default function Login() {
       <nav className="bg-gray-900 sm:bg-transparent w-full h-28 sm:h-40 relative sm:absolute z-20">
         <div className="flex flex-col sm:flex-row justify-between h-full px-20 w-full">
           <div className="logo flex h-full w-auto items-end align-center justify-center">
-            <Link to="/">
-              <button className="cursor-pointer">
-                <img
-                  className="h-20 w-auto pb-5"
-                  alt="company-logo"
-                  src="https://imaginem.io/blacksilver/wp-content/uploads/sites/2/2019/11/logo_responsive_alt.png"
-                />
-              </button>
-            </Link>
+          <Link to="/">
+            <img
+              className="h-32 w-auto pb-5 pt-5 sm:pt-0"
+              alt="company-logo"
+              src="/logo1921.png"
+            />
+          </Link>
           </div>
         </div>
       </nav>
