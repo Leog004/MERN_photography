@@ -10,13 +10,11 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Autocomplete from 'react-google-autocomplete';
 
-
 const datesToAddClassTo = [
   '2022-03-29T00:00:00',
   '2022-04-02T00:00:00',
   '2022-04-12T00:00:00',
 ];
-
 
 function isSameDay(a, b) {
   const formattedDate = format(parseISO(a), 'MM/dd/yyyy');
@@ -40,8 +38,6 @@ export default function Booking() {
   const [value, onChange] = useState(new Date());
 
   const user = useSelector((state) => state.user.currentUser);
-  const Key = process.env.REACT_APP_GMAP_API_KEY;
-  console.log(Key);
   return (
     <>
       <Navbar />
@@ -92,7 +88,7 @@ export default function Booking() {
                     Location
                   </label>
                   <Autocomplete
-                    apiKey={Key}
+                    apiKey={process.env.REACT_APP_GMAP_API_KEY}
                     className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                     onPlaceSelected={(place) => {
                       console.log(place);
@@ -176,9 +172,9 @@ export default function Booking() {
         </div>
       </section>
       <MessengerCustomerChat
-                    pageId="1213488835459332"
-                    appId="371668448192097"
-                  />
+        pageId="1213488835459332"
+        appId="371668448192097"
+      />
       <Footer />
     </>
   );
