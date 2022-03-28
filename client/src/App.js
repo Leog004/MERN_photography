@@ -14,6 +14,7 @@ import Booking from './Pages/Booking';
 import Signup from './Pages/Signup';
 import Account from './Pages/Account';
 
+
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
 

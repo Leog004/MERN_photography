@@ -16,7 +16,6 @@ const datesToAddClassTo = [
   '2022-04-12T00:00:00',
 ];
 
-const Key = process.env.GMAP_API_KEY;
 
 function isSameDay(a, b) {
   const formattedDate = format(parseISO(a), 'MM/dd/yyyy');
@@ -40,7 +39,8 @@ export default function Booking() {
   const [value, onChange] = useState(new Date());
 
   const user = useSelector((state) => state.user.currentUser);
-
+  const Key = process.env.REACT_APP_GMAP_API_KEY;
+  console.log(Key);
   return (
     <>
       <Navbar />
