@@ -135,8 +135,8 @@ export default function Booking() {
                 </div>
               </div>
 
-              <div className="flex w-full mt-6">
-                <div className="flex mr-10">
+              <div className="flex flex-wrap w-full mt-6">
+                <div className="flex mb-10 mr-10">
                   {user ? (
                     <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
                       Submit Booking
@@ -150,7 +150,7 @@ export default function Booking() {
                   )}
                 </div>
 
-                <div className="flex">
+                <div className="flex mb-10">
                   <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
                     Contact
                   </button>

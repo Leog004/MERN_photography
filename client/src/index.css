@@ -102,7 +102,8 @@ code {
   background: rgba(124, 114, 114, 0.651);
 }
 
-.flex {
-  display: flex;
-  display: -webkit-flex;
+.react-calendar__navigation button {
+  background: none;
+  min-width: 44px;
+  color: white !important;
 }
