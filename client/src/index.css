@@ -30,80 +30,82 @@ code {
   color:white !important;
   background-color: rgb(243, 129, 129) !important;
 }
-
-/* .react-calendar {
-  width: 100% !important;
-  height: 100% !important;
-  background: rgb(223, 226, 243);
-  border-color: rgba(48, 38, 38, 0.212) !important;
-  border-top-left-radius: 12px !important;
-  border-top-right-radius: 12px !important;
-  overflow: hidden !important;
+@media (min-width: 800px) {
+  /* CSS that should be displayed if width is equal to or greater than 800px goes here */
+  .react-calendar {
+    width: 100% !important;
+    height: 100% !important;
+    background: rgb(223, 226, 243);
+    border-color: rgba(48, 38, 38, 0.212) !important;
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+    overflow: hidden !important;
+  }
+  
+  .react-calendar__navigation {
+    padding: 2rem !important;
+    color: rgb(119, 113, 113) !important;
+    background: rgb(31, 35, 59) !important;
+    border-bottom: none !important;
+    color: #fff !important;
+    margin-bottom: 0.2px !important;
+    overflow: hidden !important;
+  }
+  
+  .react-calendar__month-view__weekdays {
+    background: rgb(162, 174, 243) !important;
+    padding: 10px 0 !important;
+    text-align: center !important;
+  }
+  
+  .react-calendar__month-view__days__day{
+    text-align: left !important;
+    padding: 0px 10px 12px 8px !important;
+    border-right: 1px solid rgb(212, 207, 207) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.76) !important;
+    color: black;
+    font-weight: bold !important;
+  }
+  
+  .react-calendar__month-view__days__day:nth-child(7n + 0){
+    border-right: none !important;
+  }
+  
+  .highlight {
+    cursor:not-allowed !important;
+  }
+  
+  .react-calendar__month-view__days__day--weekend {
+    color: black !important;
+    font-weight: bold !important;
+  }
+  .react-calendar__tile {
+    max-width: 100%;
+    text-align: center;
+    line-height: 40px !important;
+  }
+  
+  .react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+    position: relative;
+    cursor: not-allowed !important;
+  }
+  
+  .react-calendar__tile:disabled::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15%; 
+    transform: translate(-50%, -50%);
+    transform: rotate(-30deg);
+    width: 68px;
+    height: 1px;
+    background: rgba(124, 114, 114, 0.651);
+  }
+  
+  .react-calendar__navigation button {
+    background: none;
+    min-width: 44px;
+    color: white !important;
+  }
 }
-
-.react-calendar__navigation {
-  padding: 2rem !important;
-  color: rgb(119, 113, 113) !important;
-  background: rgb(31, 35, 59) !important;
-  border-bottom: none !important;
-  color: #fff !important;
-  margin-bottom: 0.2px !important;
-  overflow: hidden !important;
-}
-
-.react-calendar__month-view__weekdays {
-  background: rgb(162, 174, 243) !important;
-  padding: 10px 0 !important;
-  text-align: center !important;
-}
-
-.react-calendar__month-view__days__day{
-  text-align: left !important;
-  padding: 0px 10px 12px 8px !important;
-  border-right: 1px solid rgb(212, 207, 207) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.76) !important;
-  color: black;
-  font-weight: bold !important;
-}
-
-.react-calendar__month-view__days__day:nth-child(7n + 0){
-  border-right: none !important;
-}
-
-.highlight {
-  cursor:not-allowed !important;
-}
-
-.react-calendar__month-view__days__day--weekend {
-  color: black !important;
-  font-weight: bold !important;
-}
-.react-calendar__tile {
-  max-width: 100%;
-  text-align: center;
-  line-height: 40px !important;
-}
-
-.react-calendar__tile:disabled {
-  background-color: #f0f0f0;
-  position: relative;
-  cursor: not-allowed !important;
-}
-
-.react-calendar__tile:disabled::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 15%; 
-  transform: translate(-50%, -50%);
-  transform: rotate(-30deg);
-  width: 68px;
-  height: 1px;
-  background: rgba(124, 114, 114, 0.651);
-}
-
-.react-calendar__navigation button {
-  background: none;
-  min-width: 44px;
-  color: white !important;
-} */
