@@ -23,28 +23,28 @@ export default function Navbar() {
         <div className="nav-items flex flex-col h-full justify-center items-center">
           <SocialMedia />
 
-          <ul className="item flex w-full flex-wrap justify-center gap-4 sm:gap-10 pb-5 text-white items-end align-center h-auto">
-            <li>
+          <ul className="item flex w-full flex-wrap justify-center pb-5 text-white items-end align-center h-auto">
+            <li className='mr-4 sm:mr-10'>
               <Link to="/">
                 <button>Home</button>
               </Link>
             </li>
-            <li>
+            <li className='mr-4 sm:mr-10'>
               <Link to="/gallery">
                 <button>Gallery</button>
               </Link>
             </li>
-            <li>
+            <li className='mr-4 sm:mr-10'>
               <Link to="/services">
                 <button>Services</button>
               </Link>
             </li>
-            <li>
+            <li className='mr-4 sm:mr-10'>
               <Link to="/booking">
                 <button>Booking</button>
               </Link>
             </li>
-            <li>
+            <li className=''>
               {user ? (
                 <Link to="/account">
                   <FontAwesomeIcon className="cursor-pointer" icon={faUser} />

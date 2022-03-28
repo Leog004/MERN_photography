@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="relative">
     <Navbar />
-      <div className="flex flex-col md:flex-row max-h-screen h-full sm:h-screen">
+      <div className="flex flex-col md:flex-row min-h-screen h-screen">
         <div
           className="flex w-full md:w-1/3 h-full bg-cover bg-center border border-gray-800"
           style={{
