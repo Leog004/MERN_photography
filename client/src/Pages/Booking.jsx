@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Hero from '../Components/Hero';
 import Navbar from '../Components/NavBar';
 import Footer from '../Components/Footer';
@@ -9,6 +9,7 @@ import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Autocomplete from 'react-google-autocomplete';
+
 
 const datesToAddClassTo = [
   '2022-03-29T00:00:00',
