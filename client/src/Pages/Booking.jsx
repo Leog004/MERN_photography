@@ -47,7 +47,7 @@ export default function Booking() {
           'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
         }
       />
-      <section className="w-full h-full max-w-7xl mx-auto py-24">
+      <section className="w-full h-full max-w-7xl mx-auto py-24 px-10">
         <div className="flex flex-col w-full justify-center items-center mb-20 gap-y-1">
           <h2 className="font-semibold text-xl">Booking</h2>
           <h1 className="font-semibold text-3xl mb-5">Let's work together</h1>
@@ -158,7 +158,7 @@ export default function Booking() {
               </div>
             </form>
           </div>
-          <div className="flex h-full items-center justify-center align-center w-full sm:w-1/2 px-10">
+          <div className="flex h-full items-center justify-center align-center px-0 w-full sm:w-1/2 sm:px-10">
             <Calendar
               className="shadow-xl h-full"
               tileClassName={tileClassName}
