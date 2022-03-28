@@ -6,7 +6,7 @@ const LinearGradient =
 export default function Hero({title, image}) {
   return (
     <div
-    className="min-h-full h-[40rem] w-full bg-cover bg-center"
+    className="min-h-full h-[25rem] sm:h-[40rem] w-full bg-cover bg-center"
     style={{
       backgroundImage: `${LinearGradient},url('${image}')`,
     }}
