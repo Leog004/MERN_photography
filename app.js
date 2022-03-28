@@ -88,6 +88,11 @@ app.use((req, res, next) => {
 });
 
 // 3). ROUTES
+
+app.get('/', async (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/bookings', bookingRouter);
 
