@@ -8,9 +8,7 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-router.route('/').post(bookingController.createBookingEvent);
-
-router.route('/hello').get(bookingController.getMyBookings);
+router.route('/').get(bookingController.getMyBookings);
 
 router.get(
   '/checkout-session/:tourId',
@@ -18,9 +16,10 @@ router.get(
   bookingController.getCheckoutSession
 );
 
-router.route('/').get(bookingController.getAllBookings);
-
 router.use(authController.restrictTo('admin', 'user'));
+
+router.route('/').get(bookingController.getAllBookings);
+router.route('/').post(bookingController.createBookingEvent);
 
 router
   .route('/:id')

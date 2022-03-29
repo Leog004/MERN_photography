@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Hero from '../Components/Hero';
 import Navbar from '../Components/NavBar';
 import { logout } from '../redux/UserRedux';
 import { useDispatch } from 'react-redux';
 import Footer from '../Components/Footer';
 import { useSelector } from 'react-redux';
-import {UserRequest } from '../requestMethod';
+import { UserRequest } from '../requestMethod';
 
 export default function Account() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.user.currentUser?.token);
+
+  const config = useMemo(
+    () => ({
+      headers: { Authorization: `Bearer ${token}` },
+    }),
+    [token]
+  );
 
   const { isFetching } = useSelector((state) => state.user);
 
@@ -17,6 +24,7 @@ export default function Account() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [bookings, setBookings] = useState([]);
   const [showModel, setshowModel] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -30,9 +38,6 @@ export default function Account() {
       };
 
       try {
-        const config = {
-          headers: { Authorization: `Bearer ${token}` },
-        };
         const uUser = await UserRequest.patch(`users/updateMe`, data, config);
         console.log(uUser);
       } catch (err) {
@@ -45,9 +50,6 @@ export default function Account() {
   useEffect(() => {
     const getUserInformation = async () => {
       try {
-        const config = {
-          headers: { Authorization: `Bearer ${token}` },
-        };
         const res = await UserRequest.get(`users/me `, config);
         const { email, firstName, lastName, phone } = res.data.data.data;
         setEmail(email);
@@ -59,8 +61,20 @@ export default function Account() {
       }
     };
 
+    const getUserBookings = async () => {
+      try {
+        const res = await UserRequest.get(`bookings/`, config);
+        const data = res.data.data.data;
+        console.log(data);
+        setBookings(data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
     getUserInformation();
-  }, [token]);
+    getUserBookings();
+  }, [config]);
 
   return (
     <div>
@@ -75,26 +89,32 @@ export default function Account() {
 
       <div className="w-full max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row w-full h-full">
-          <div class="relative bg-gray-100">
-            <div class="flex flex-col sm:flex-row sm:justify-around">
-              <div class="w-72 sm:h-screen">
-                <nav class="mt-10 px-6 ">
-                  <button class="w-full bg-gray-300 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
-                    <span class="mx-4 text-lg font-normal">
+          <div className="relative bg-gray-50 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:justify-around">
+              <div className="w-72 sm:h-screen">
+                <nav className="mt-10">
+                  <button className="w-full bg-gray-300 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-600">
+                    <span className="mx-4 text-lg font-normal">
                       Personal Information
                     </span>
-                    <span class="flex-grow text-right"></span>
+                    <span className="flex-grow text-right"></span>
                   </button>
-                  <button class="w-full hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-800 dark:text-gray-100 rounded-lg bg-gray-100 dark:bg-gray-600">
-                    <span class="mx-4 text-lg font-normal">Your Bookings</span>
-                    <span class="flex-grow text-right"></span>
-                  </button>
+                  <div className="w-full items-start p-2 my-6 transition-colors duration-200  text-gray-800">
+                    <span className="flex flex-col mx-4 text-lg font-normal">
+                      Your Bookings
+                      <ul className="w-full h-full py-2 text-sm flex flex-col justify-start self-start">
+                        {bookings.map((el) => (
+                          <li className='flex cursor-pointer w-full mb-4 ml-2 px-2 py-2 underline underline-offset-4 hover:text-gray-800 hover:bg-gray-200'>{el.event.name}</li>
+                        ))}
+                      </ul>
+                    </span>
+                  </div>
                   <button
                     onClick={() => dispatch(logout())}
-                    class="w-full hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
+                    className="w-full hover:text-gray-800 hover:bg-gray-200 flex items-center p-2 my-6 transition-colors duration-200  text-gray-600"
                   >
-                    <span class="mx-4 text-lg font-normal">Sign Out</span>
-                    <span class="flex-grow text-right"></span>
+                    <span className="mx-4 text-lg font-normal">Sign Out</span>
+                    <span className="flex-grow text-right"></span>
                   </button>
                 </nav>
               </div>

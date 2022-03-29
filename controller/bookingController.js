@@ -97,9 +97,12 @@ exports.getMyBookings = catchAsync(async (req, res, next) => {
 
   const bookings = await Booking.find({
     where: { user },
+    sort: {
+      createdAt: -1, //Sort by Date Added DESC
+    },
   }).select('-user');
 
-  res.status(200).json({ status: 'success', bookings });
+  return res.status(200).json({ status: 'success', bookings });
 });
 
 exports.createBooking = factory.createOne(Booking);
