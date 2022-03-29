@@ -63,27 +63,27 @@ export default function Booking() {
                 <div>
                   <label
                     className="text-gray-700 dark:text-gray-200"
-                    for="emailAddress"
+                    for="event"
                   >
                     Type of event:{' '}
                   </label>
 
                   <select
                     class="block mt-2 w-52 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    name="animals"
+                    name="event"
                   >
                     <option value="">Select an option</option>
-                    <option value="dog">Wedding</option>
-                    <option value="cat">Headshots</option>
-                    <option value="hamster">Real Estate</option>
-                    <option value="parrot">Other</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Headshots">Headshots</option>
+                    <option value="Real Estate">Real Estate</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
                 <div>
                   <label
                     className="text-gray-700 dark:text-gray-200"
-                    for="password"
+                    for="Location"
                   >
                     Location
                   </label>
