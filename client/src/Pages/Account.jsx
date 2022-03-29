@@ -64,8 +64,7 @@ export default function Account() {
     const getUserBookings = async () => {
       try {
         const res = await UserRequest.get(`bookings/`, config);
-        const data = res.data.data.data;
-        console.log(data);
+        const data = res.data.bookings
         setBookings(data);
       } catch (e) {
         console.log(e);
