@@ -1,0 +1,20 @@
+[
+    {
+        "coverImage": "https://images.unsplash.com/photo-1553272725-086100aecf5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+        "title": "Commercial",
+        "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas accumsan",
+        "Gallery": "6244aa6db2fb986861b2ff03"
+    },
+    {
+        "coverImage": "https://images.unsplash.com/photo-1629264422348-4437c4849179?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "title": "Lifestyle",
+        "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas accumsan",
+        "Gallery": "6244aa6db2fb986861b2ff03"
+    },
+    {
+        "coverImage": "https://images.unsplash.com/photo-1624404238005-5a909e551a8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "title": "Special Moments",
+        "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas accumsan",
+        "Gallery": "6244aa6db2fb986861b2ff03"
+    }
+]

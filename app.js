@@ -16,6 +16,7 @@ const globalErrorHandler = require('./controller/errorController');
 //ROUTE HANDLERS
 const userRouter = require('./routes/userRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
@@ -95,6 +96,7 @@ app.get('/', async (req, res) => {
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/bookings', bookingRouter);
+app.use('/api/v1/view', viewRouter);
 
 app.all('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));

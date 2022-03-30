@@ -13,7 +13,8 @@ import Services from './Pages/Services';
 import Booking from './Pages/Booking';
 import Signup from './Pages/Signup';
 import Account from './Pages/Account';
-
+import AHome from './Pages/Admin/AHome';
+import AGallery from './Pages/Admin/AGallery';
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -26,10 +27,46 @@ const App = () => {
           <Route exact path="/gallery" element={<Gallery />} />
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/booking" element={<Booking />} />
-          <Route path="/account" element={user ? <Account /> : <Navigate to="/" />} />
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-          <Route path="/login/:userId" element={user ? <Navigate to="/" /> : <Login />} />
-          <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />
+          <Route
+            path="/account"
+            element={user ? <Account /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/login/:userId"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/signup"
+            element={user ? <Navigate to="/" /> : <Signup />}
+          />
+
+          {/* Admin */}
+
+          <Route
+            path="/admin"
+            element={
+              user && user?.data?.user?.role === 'admin' ? (
+                <AHome/>
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+
+          <Route
+            path="/admin/gallery"
+            element={
+              user && user?.data?.user?.role === 'admin' ? (
+                <AGallery/>
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
         </Routes>
       </ScrollToTop>
     </Router>

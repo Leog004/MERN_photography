@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const User = require('../../models/userModel');
 const Event = require('../../models/eventModel');
-const EventGallery = require('../../models/eventGallery');
+const ViewGallery = require('../../models/viewGalleryModel');
+const ViewHome = require('../../models/viewHomeModel');
 
 dotenv.config({ path: './.env' });
 
@@ -22,17 +23,22 @@ mongoose
 
 // READ JSON FILE
 const events = JSON.parse(fs.readFileSync(`${__dirname}/events.json`, 'utf-8'));
-const eventsGallery = JSON.parse(
-  fs.readFileSync(`${__dirname}/eventsGallery.json`, 'utf-8')
+const viewGallery = JSON.parse(
+  fs.readFileSync(`${__dirname}/viewGallery.json`, 'utf-8')
 );
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
+const viewHome = JSON.parse(
+  fs.readFileSync(`${__dirname}/viewHome.json`, 'utf-8')
+);
 
 // IMPORT DATA INTO DB
 const importData = async () => {
   try {
-    await Event.create(events);
+    //await Event.create(events);
+    //await ViewGallery.create(viewGallery);
+    await ViewHome.create(viewHome);
     //await EventGallery.create(eventsGallery);
-    await User.create(users, { validateBeforeSave: false });
+    //await User.create(users, { validateBeforeSave: false });
     console.log('Data successfully loaded!');
   } catch (err) {
     console.log(err);
@@ -43,9 +49,10 @@ const importData = async () => {
 // DELETE ALL DATA FROM DB
 const deleteData = async () => {
   try {
-    await Event.deleteMany();
-    await EventGallery.deleteMany();
-    await User.deleteMany();
+    //await Event.deleteMany();
+    //await EventGallery.deleteMany();
+    //await User.deleteMany();
+    await ViewHome.deleteMany();
     console.log('Data successfully deleted!');
   } catch (err) {
     console.log(err);
