@@ -4,7 +4,7 @@ const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
 const Event = require('../models/eventModel');
 const AppError = require('../utils/appError');
-const Email = require('../utils/email');
+//const Email = require('../utils/email');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
@@ -85,7 +85,7 @@ exports.createBookingEvent = catchAsync(async (req, res, next) => {
 
   const getUser = await User.findById(user);
 
-  await new Email(getUser, req.query).sendBooking();
+  await new Email(getUser, "").sendBooking();
 
   res.status(200).json({ status: 'success' });
 });

@@ -17,7 +17,7 @@ const eventSchema = new mongoose.Schema({
   },
   eventType: {
     type: String,
-    enum: ['wedding', '16th', 'merternity', 'business', 'sports', 'other'],
+    enum: ['wedding', '16th', 'merternity', 'business', 'sports', 'other', 'headshots', 'realEstate'],
     default: 'other',
   },
   location: {

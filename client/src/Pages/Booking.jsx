@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Hero from '../Components/Hero';
 import Navbar from '../Components/NavBar';
 import Footer from '../Components/Footer';
@@ -9,6 +9,7 @@ import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Autocomplete from 'react-google-autocomplete';
+import { UserRequest } from '../requestMethod';
 
 const datesToAddClassTo = [
   '2022-03-29T00:00:00',
@@ -36,8 +37,42 @@ function tileClassName({ date, view }) {
 }
 export default function Booking() {
   const [value, onChange] = useState(new Date());
-
+  const [event, setEvent] = useState('');
+  const [location, setLocation] = useState('');
+  const [time, setTime] = useState('');
   const user = useSelector((state) => state.user.currentUser);
+  const token = user?.token;
+
+  const config = useMemo(
+    () => ({
+      headers: { Authorization: `Bearer ${token}` },
+    }),
+    [token]
+  );
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = {
+        "user": "623bcff5647b00fa55df8a98",
+        "price": 200,
+        "event": {
+            "name" : "asd",
+            "description": "asda",
+            "eventType": "wedding",
+            "location": "asdasd",
+            "time": "asd",
+            "date": "100"
+        }   
+    }
+      const newBooking = await UserRequest.post(`bookings/`, data, config);
+      console.log(newBooking);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -71,11 +106,15 @@ export default function Booking() {
                   <select
                     class="block mt-2 w-52 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                     name="event"
+                    value={event}
+                    onChange={(e) => setEvent(e.target.value)}
                   >
                     <option value="">Select an option</option>
-                    <option value="Wedding">Wedding</option>
-                    <option value="Headshots">Headshots</option>
-                    <option value="Real Estate">Real Estate</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="merternity">Merternity</option>
+                    <option value="business">Business</option>
+                    <option value="headshots">Headshots</option>
+                    <option value="realEstate">Real Estate</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
@@ -91,7 +130,7 @@ export default function Booking() {
                     apiKey={process.env.REACT_APP_GMAP_API_KEY}
                     className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                     onPlaceSelected={(place) => {
-                      console.log(place);
+                      setLocation(place.formatted_address);
                     }}
                     options={{
                       types: ['address'],
@@ -112,6 +151,9 @@ export default function Booking() {
                     <input
                       id="time"
                       type="text"
+                      name="time"
+                      value={time}
+                      onChange={(e) => setTime(e.target.value)}
                       placeholder="Insert a desire time"
                       className="block mb-4 w-full px-4 py-2 mt-2 mr-4 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                     />
@@ -138,7 +180,10 @@ export default function Booking() {
               <div className="flex flex-wrap w-full mt-6">
                 <div className="flex mb-10 mr-10">
                   {user ? (
-                    <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                    <button
+                      onClick={handleSubmit}
+                      className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                    >
                       Submit Booking
                     </button>
                   ) : (
