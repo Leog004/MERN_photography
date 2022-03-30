@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EventCardBill() {
+export default function EventCardBill({data}) {
   return (
     <card class="rounded w-full shadow-xl flex flex-col sm:flex-row justify-between text-gray-200 bg-teal-900 mb-14">
     {/* <!-- Title --> */}
@@ -10,7 +10,7 @@ export default function EventCardBill() {
     <div class="flex flex-row items-center pt-8 bg-white bg-opacity-10 pl-12 pr-10 gap-3">
       <div class="flex flex-row gap-1">
         <span class="text-base"> $ </span>
-        <p class="text-5xl font-semibold">1,299</p>
+        <p class="text-5xl font-semibold">{data.price}</p>
       </div>
       <p class="font-light text-xs">Current Balance</p>
     </div>

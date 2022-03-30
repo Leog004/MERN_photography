@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import Footer from '../Components/Footer';
 import { useSelector } from 'react-redux';
 import { UserRequest } from '../requestMethod';
-import EventCardBill from '../Components/EventCardBill';
+import EventInformation from '../Components/EventInformation';
 
 export default function Account() {
   const dispatch = useDispatch();
@@ -27,6 +27,8 @@ export default function Account() {
   const [phone, setPhone] = useState('');
   const [bookings, setBookings] = useState([]);
   const [showEventInfo, setShowEventInfo] = useState(false);
+  const [showEventID, setShowEventID] = useState('');
+  const [showEventData, setShowEventData] = useState([]);
   const [showModel, setshowModel] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -35,7 +37,13 @@ export default function Account() {
     const show = e.target.id;
 
     if (show === 'personal') setShowEventInfo(false);
-    else setShowEventInfo(true);
+    else {
+      setShowEventInfo(true);
+      const eventID = e.target.id.replace('booking_', '');
+      const eventData = bookings.find(el => el.event._id === eventID);
+      setShowEventID(eventID);
+      setShowEventData(eventData);
+    }
   };
 
   const handleOnClick = () => {
@@ -105,7 +113,7 @@ export default function Account() {
                   <button
                     id={'personal'}
                     onClick={handleNavigate}
-                    className="w-full text-lg font-normal bg-gray-300 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-600"
+                    className={`w-full text-lg font-normal ${showEventInfo ? 'bg-gray-50' : 'bg-gray-300' } flex items-center p-2 my-6 transition-colors  duration-200  text-gray-600`}
                   >
                     Personal Information
                   </button>
@@ -119,8 +127,8 @@ export default function Account() {
                             className="flex cursor-pointer w-full mb-4 ml-2 underline underline-offset-4 hover:text-gray-800 hover:bg-gray-200"
                           >
                             <button
-                              className="flex w-full h-full px-2 py-2 "
-                              id={`booking_${el.event.name}`}
+                              className={`flex w-full h-full px-2 py-2 ${showEventInfo && showEventID === el.event._id && 'bg-gray-300'}`}
+                              id={`booking_${el.event._id}`}
                               onClick={handleNavigate}
                             >
                               {el.event.name}
@@ -242,23 +250,7 @@ export default function Account() {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex h-full">
-                    <div className="container px-5 pt-24 pb-10 mx-auto w-full bg-[#fafcfb4d]">
-                      <div className="flex flex-col text-center w-full mb-12">
-                        <h1 className="sm:text-3xl text-2xl text-left font-medium title-font mb-4 text-gray-900">
-                          Event Information
-                        </h1>
-                        <hr />
-                      </div>
-                      <EventCardBill data={""} />
-                      <hr />
-                      <div className="flex flex-col text-center w-full mt-12">
-                        <h1 className="sm:text-3xl text-left text-2xl font-medium title-font mb-4 text-gray-900">
-                          Your Collection
-                        </h1>
-                      </div>
-                    </div>
-                  </div>
+                  <EventInformation data={showEventData} />
                 )}
               </section>
             </div>
