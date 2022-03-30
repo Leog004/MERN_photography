@@ -47,9 +47,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
   createSendToken(newUser, 201, req, res);
 
-  const url = `${req.protocol}://localhost:3000/users/auth/${
-    newUser._id
-  }`;
+  const url = `${req.protocol}://localhost:3000/users/auth/${newUser._id}`;
 
   await new Email(newUser, url).sendBooking();
 });
