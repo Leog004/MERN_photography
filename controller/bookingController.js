@@ -84,9 +84,6 @@ exports.createBookingEvent = catchAsync(async (req, res, next) => {
   });
 
   const getUser = await User.findById(user);
-  console.log(getUser);
-
-  await new Email(getUser, '').sendBooking();
 
   res.status(200).json({ status: 'success' });
 });
