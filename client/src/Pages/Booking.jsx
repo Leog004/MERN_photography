@@ -55,17 +55,17 @@ export default function Booking() {
 
     try {
       const data = {
-        "user": "623bcff5647b00fa55df8a98",
-        "price": 200,
-        "event": {
-            "name" : "asd",
-            "description": "asda",
-            "eventType": "wedding",
-            "location": "asdasd",
-            "time": "asd",
-            "date": "100"
-        }   
-    }
+        user: '623bcff5647b00fa55df8a98',
+        price: 200,
+        event: {
+          name: 'A New Event',
+          description: 'This is the description of the event',
+          eventType: event,
+          location: location,
+          time: time,
+          date: value,
+        },
+      };
       const newBooking = await UserRequest.post(`bookings/`, data, config);
       console.log(newBooking);
     } catch (err) {
