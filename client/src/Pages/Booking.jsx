@@ -36,6 +36,7 @@ function tileClassName({ date, view }) {
   }
 }
 export default function Booking() {
+  console.log(process.env.REACT_APP_GMAP_API_KEY);
   const [value, onChange] = useState(new Date());
   const [event, setEvent] = useState('');
   const [location, setLocation] = useState('');
@@ -98,13 +99,13 @@ export default function Booking() {
                 <div>
                   <label
                     className="text-gray-700 dark:text-gray-200"
-                    for="event"
+                    htmlFor="event"
                   >
                     Type of event:{' '}
                   </label>
 
                   <select
-                    class="block mt-2 w-52 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    className="block mt-2 w-52 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                     name="event"
                     value={event}
                     onChange={(e) => setEvent(e.target.value)}
@@ -122,7 +123,7 @@ export default function Booking() {
                 <div>
                   <label
                     className="text-gray-700 dark:text-gray-200"
-                    for="Location"
+                    htmlFor="Location"
                   >
                     Location
                   </label>
@@ -144,7 +145,7 @@ export default function Booking() {
                   <div className="flex flex-col w-full">
                     <label
                       className="text-gray-700 dark:text-gray-200"
-                      for="time"
+                      htmlFor="time"
                     >
                       Time
                     </label>
@@ -161,7 +162,7 @@ export default function Booking() {
                   <div className="flex flex-col w-full">
                     <label
                       className="text-gray-700 dark:text-gray-200"
-                      for="date"
+                      htmlFor="date"
                     >
                       Date
                     </label>

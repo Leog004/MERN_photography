@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../Components/Admin/Navbar';
-import axios from 'axios';
+import { UserRequest } from '../../requestMethod';
 
 export default function AGallery() {
   const [gallery, setGallery] = useState([]);
@@ -10,7 +10,7 @@ export default function AGallery() {
   useEffect(() => {
     const getGallery = async () => {
       try {
-        const res = await axios.get(
+        const res = await UserRequest.get(
           'http://localhost:8000/api/v1/view/gallery'
         );
         const data = res.data.data.data;
@@ -88,15 +88,15 @@ export default function AGallery() {
               >
                Cancel
               </button>
-          <div class="mb-10 w-96">
+          <div className="mb-10 w-96">
             <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="username"
             >
               Gallery Name
             </label>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="gallery"
               id="gallery"
               type="text"
@@ -105,7 +105,7 @@ export default function AGallery() {
           </div>
           <div className="mb-3 w-96">
             <label
-              for="formFileMultiple"
+              htmlFor="formFileMultiple"
               className="form-label inline-block mb-2 text-gray-700"
             >
               Multiple files input example

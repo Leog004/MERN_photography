@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = "https://mernstackphotograph.herokuapp.com/api/v1/";
+const BASE_URL = "https://mern-photography-api.onrender.com/api/v1/";
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 //     .accessToken || "";
