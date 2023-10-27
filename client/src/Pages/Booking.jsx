@@ -218,7 +218,7 @@ export default function Booking() {
         </div>
       </section>
       <MessengerCustomerChat
-        pageId="302629073249032"
+        pageId="1213488835459332"
         appId="254515237206307"
       />
       <Footer />
