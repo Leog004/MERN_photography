@@ -24,9 +24,9 @@ const App = () => {
       <ScrollToTop>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/gallery" element={<Gallery />} />
-          <Route exact path="/services" element={<Services />} />
-          <Route exact path="/booking" element={<Booking />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/booking" element={<Booking />} />
           <Route
             path="/account"
             element={user ? <Account /> : <Navigate to="/" />}
